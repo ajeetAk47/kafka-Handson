@@ -1,0 +1,289 @@
+version: '2'
+
+services:
+  kafka-cluster:
+    image: landoop/fast-data-dev:latest
+    environment:
+      AVD_HOST: 127.0.0.1 # Change to 192.168.99.
+      RUNTESTS: 0 # Disable Running tests so the cluster starts faster
+    ports:
+      - 2181:2181 # Zookeeper
+      - 3030:3030 # Landoop UI
+      - 8081-8083:8081-8083 # REST Proxy, Schema Registry, Kafka Connects Ports
+      - 9581-9585:9581-9585 # JMX ports
+      - 9092:9092 # Kafka Broker
+
+  # We will use elasticsearch as one our sinks 
+  elasticsearch:
+    # image: nshou/elasticsearch-kibana:latest
+    image: itzg/elasticsearch:latest
+    environment:
+      PLUGINS: appbaseio/dejavu
+      OPTS: -Dindex.number_of_shards=1 -Dindex.number_of_replicas=0
+    ports:
+      - 9200:9200 # ElasticSearch Port
+  # - 5600:5600 # Kibana port
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # We will use postgres as one of our sinks 
+  postgres:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - 5432:5432
