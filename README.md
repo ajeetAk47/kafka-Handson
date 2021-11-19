@@ -17,9 +17,9 @@
 ### Get Connector Status
 `curl -s 127.0.0.1:8083/connectors/connector-name/status | jq`
 ### Pause / Resume a Connector
-`curl -s 127.0.0.1:8083/connectors/connector-name/pause`
+`curl -s PUT 127.0.0.1:8083/connectors/connector-name/pause`
 ####
-`curl -s 127.0.0.1:8083/connectors/connector-name/resume`
+`curl -s PUT 127.0.0.1:8083/connectors/connector-name/resume`
 ### Delete Connector 
 `curl -s -X DELETE 127.0.0.1:8083/connectors/connector-name`
 ### Create a new Connector
