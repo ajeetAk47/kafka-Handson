@@ -3,7 +3,7 @@
 `docker run --rm -it --net=host landoop/fast-data-dev bash`
 
 ### To install jq to pretty print json
-`apt update && apt add jq`
+`apt update && apt install jq`
 
 # Rest Connect Rest API
 ### Get Worker Information
